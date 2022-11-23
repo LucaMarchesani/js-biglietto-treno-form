@@ -15,34 +15,30 @@ Solo una volta che il milestone 1 sarà completo e funzionante allora realizzere
 Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagina, sempre rispettando le due cifre decimali.
 */
 
-const inputKilometers = (document.getElementById('km'));
-const inputUserAge = (document.getElementById('age'));
-console.log(inputKilometers, inputUserAge);
 
-const inputButton = (document.getElementById('button'));
+
+const inputButton = document.getElementById('button');
 console.log(inputButton);
 
-
 inputButton.addEventListener('click', function(){
+    
+    let kmPrice = (0.2762);
+    const kilometers = parseInt(document.getElementById('km').value);
+    const userAge = parseInt(document.getElementById('age').value);
+    let ticketPrice = kmPrice * kilometers;
 
-    let ticketPrice = 0.2762 * inputKilometers.value;
-    console.log(ticketPrice);
-
-    const minorDiscount = 17.5 / 100 * ticketPrice;
-    const over65Discount = 33.3 / 100 * ticketPrice;
-    console.log(minorDiscount, over65Discount);
-
-    if (inputUserAge < 18){
-        ticketPrice = ticketPrice - minorDiscount;
+    if (userAge < 18) {
+        ticketPrice = ticketPrice * 0.825;
     }
 
-    else if (inputUserAge >= 65){
-        ticketPrice = ticketPrice - over65Discount;
+    else if (userAge >= 65) {
+        ticketPrice = ticketPrice * 0.667;
     }
 
-    document.getElementById('ticket').innerHTML = "Il prezzo del tuo biglietto è: " + ticketPrice.toFixed(2) + "&euro;";
+    document.getElementById("ticket").innerHTML = "Il prezzo del suo biglietto è di: " + ticketPrice.toFixed(2) + " &euro;";
     console.log(ticketPrice.toFixed(2));
-});
+})
+
 
 
 
